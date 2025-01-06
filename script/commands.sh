@@ -15,12 +15,12 @@ bg %1
 #? variables
 printenv
 #? Programing constructions
-# if..then
+#@ if..then
 ZMIENNA=1
 if [ $ZMIENNA -eq 1 ]; then
   echo "Zmienna ma wartość 1"
 fi
-# if..then..else
+#@ if..then..else
 DZIEN="piatek"
 if [ $DZIEN = "piatek" ]; then
   echo "Hurra, dzisiaj jest piatek."
@@ -28,26 +28,30 @@ else
   echo "Czy piatek kiedykolwiek nadejdzie?"
 fi
 help test # Operatory wyrażeń tekstowych
-# Inne funkcje książka 'Linux Biblia' strony 179-185;
+#@ Inne funkcje książka 'Linux Biblia' strony 179-185;
 if..then..elif
 Polecenie case
 Pętla for..do
 Pętla While..do i untill..do
-#grep
+#@ grep
 grep /home /etc/passwd
 env | grep ^HO
 man grep
-#cut - usuwanie fragmentow wierszy tekstu
+#@ cut - usuwanie fragmentow wierszy tekstu
 grep /home /etc/passwd | cut -d':' -f6 - (- ostatni oznacza pokazania wartości danych ze standardowego wejścia potoku)
-#tr - przekształcenie badz usuwanie znakow
+#@ tr - przekształcenie badz usuwanie znakow
 F00="PolaCzeNie zNAKow"
 echo $F00 | tr [A-Z] [a-z]
-#sed - edytor strumieni
-#Wyszukiwanie w folderze slowa home
+#@ sed - edytor strumieni
+sed -i "/$*/d" $PHONELIST:
+# -i: Modyfikuje plik bezpośrednio (in-place).
+# "/$*/d": Wyszukuje linie zawierające wzorzec $* i usuwa je.
+# $PHONELIST: Nazwa pliku, który ma być modyfikowany.
 sed -n '/home/p' /etc/passwd -> pawel:x:1000:1000::/home/pawel:/bin/bash
+#@ Wyszukiwanie w folderze slowa home
 
 #? Zmienne
-#$:
+$#:
 Reprezentuje całkowitą liczbę argumentów przekazanych do skryptu.
 Na przykład, jeśli uruchomisz skrypt za pomocą ./script.sh arg1 arg2 arg3, #$ będzie równe 3.
 
